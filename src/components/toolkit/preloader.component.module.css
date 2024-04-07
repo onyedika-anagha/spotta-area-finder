@@ -1,0 +1,9 @@
+.container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  inset: 0;
+  background: rgb(var(--background-rgb));
+}

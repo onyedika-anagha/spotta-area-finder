@@ -1,0 +1,4 @@
+export enum REVIEW_ACTION_TYPES {
+  SET_REVIEWS = "theme/SET_REVIEWS",
+  FETCH_REVIEWS = "theme/FETCH_REVIEWS",
+}

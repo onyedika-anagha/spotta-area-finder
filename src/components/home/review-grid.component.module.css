@@ -1,0 +1,80 @@
+.overlay-scroll-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Set your desired height */
+}
+
+.overlay-scroll-content {
+  width: 100%;
+  height: 100%; /* Set your content height */
+  overflow-y: auto;
+}
+/* .overlay-scroll-content img {
+  object-fit: cover;
+} */
+.overlay-scroll-overlay-top {
+  background: -moz-linear-gradient(
+    top,
+    rgba(var(--background-rgb), 1) 0%,
+    rgba(var(--background-rgb), 0) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(var(--background-rgb), 1) 0%,
+    rgba(var(--background-rgb), 0) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--background-rgb), 1) 0%,
+    rgba(var(--background-rgb), 0) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  top: 0;
+}
+.overlay-scroll-overlay-bottom {
+  background: -moz-linear-gradient(
+    top,
+    rgba(var(--background-rgb), 0) 0%,
+    rgba(var(--background-rgb), 1) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(var(--background-rgb), 0) 0%,
+    rgba(var(--background-rgb), 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--background-rgb), 0) 0%,
+    rgba(var(--background-rgb), 1) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  bottom: 0;
+}
+.overlay-scroll-overlay-top,
+.overlay-scroll-overlay-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 30%;
+  /* background: linear-gradient(
+    transparent,
+    rgba(var(--background-rgb), 0.5)
+  );  */
+  pointer-events: none; /* Allow interaction with underlying content */
+  z-index: 1; /* Ensure overlays are above content */
+}
+
+.dark .overlay-scroll-overlay-top,
+.dark .overlay-scroll-overlay-bottom {
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.5)
+  ); /* Adjust opacity as needed */
+}
+
+.overlay-scroll-overlay-top {
+  opacity: 0; /* Initially hidden */
+}
+
+.overlay-scroll-overlay-bottom {
+  opacity: 1; /* Initially visible */
+}

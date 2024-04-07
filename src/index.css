@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+  --background-overlay-rgb: 255, 255, 255;
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 23, 23, 23;
+  --background-overlay-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .main {
+    @apply px-6 xl:px-24;
+  }
+  .default-button {
+    @apply bg-primary-500;
+  }
+  .card {
+    @apply block p-6 bg-white border border-gray-200 rounded-lg shadow dark:border-[#18181B] dark:bg-[#18181B];
+  }
+}
+
+.default-button {
+  height: 40px;
+  border-radius: 5px;
+}
+.avatar {
+  display: inline-block;
+  height: 2.875rem;
+  width: 2.875rem;
+}
+svg.star-svg {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
