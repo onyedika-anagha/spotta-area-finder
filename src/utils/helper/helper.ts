@@ -149,7 +149,7 @@ export const truncateEmail = (email = "") => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   },
   shareLink = (copyText: string, title: string) => {
-    const _BASE_URL = "https://spotta-area-finder.netlify.com";
+    const _BASE_URL = "https://spotta-area-finder.netlify.app";
     const uri = _BASE_URL + copyText;
     //
     if (navigator.share) {

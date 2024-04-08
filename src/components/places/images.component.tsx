@@ -5,7 +5,7 @@ import { AnimateType } from "utils/helper/helper";
 function PlaceImages() {
   return (
     <Reveal
-      type={AnimateType.FadeInLeft}
+      type={AnimateType.FadeInRight}
       className="mt-8 col-span-12 lg:col-span-5 self-start">
       <div className="grid grid-cols-2 gap-3">
         {new Array(4).fill(0).map((_, i) => (

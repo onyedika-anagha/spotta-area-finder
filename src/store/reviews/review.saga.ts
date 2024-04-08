@@ -42,7 +42,6 @@ export function* addReviewToDB({ payload: formData }: AddReview) {
 export function* setReviews({ payload: reviews }: SetReviews) {
   try {
     yield* put(reviewActions.setAllReviews(reviews));
-    console.log(reviews);
   } catch (error) {
     console.log(error as Error);
   }
