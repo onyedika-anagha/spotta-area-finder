@@ -6,7 +6,6 @@ export const longEnUSFormatter = new Intl.DateTimeFormat("en-US", {
   minute: "numeric",
   second: "numeric",
   hour12: false,
-  timeZone: "America/Los_Angeles",
 });
 export const greeting = (firstName: string) => {
     var nowTime = new Date();
@@ -62,6 +61,13 @@ export interface Review {
   area_id: string;
   image: string;
 }
+export type PlaceLocation = {
+  id: string;
+  name: string;
+  tags: string;
+  slug: string;
+  image: string;
+};
 
 export interface ReviewFormData {
   name: string;
@@ -128,4 +134,29 @@ export const truncateEmail = (email = "") => {
     // Split the input string by commas and trim whitespace from each element
     const array = inputString.split(",").map((item) => item.trim());
     return array;
+  },
+  extractFirstWords = (inputString: string): string => {
+    const words = inputString.trim().split(" ");
+    let result = words[0]; // Get the first word
+    if (words.length > 1) {
+      result += " " + words[1].charAt(0) + "."; // Add the first character of the second word with a period
+    }
+    return result;
+  },
+  capitalize = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  },
+  arrangeReviewsByCreatedAtDesc = (reviews: Reviews): Reviews => {
+    // Convert createdAt strings to Date objects for proper sorting
+    const reviewsWithDate = reviews;
+    // Sort the array by createdAt in descending order
+    reviewsWithDate.sort((a, b) => {
+      return (
+        new Date(b.createdAt.replace(" at ", " ")).getTime() -
+        new Date(a.createdAt.replace(" at ", " ")).getTime()
+      );
+    });
+
+    // Return the sorted array
+    return reviewsWithDate;
   };

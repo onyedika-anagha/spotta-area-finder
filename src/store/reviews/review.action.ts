@@ -1,4 +1,4 @@
-import { Reviews } from "utils/helper/helper";
+import { ReviewFormData, Reviews } from "utils/helper/helper";
 import {
   ActionWithPayload,
   createAction,
@@ -11,6 +11,19 @@ export type SetReviews = ActionWithPayload<
   REVIEW_ACTION_TYPES.SET_REVIEWS,
   Reviews
 >;
+
+export interface AddReviewsData extends ReviewFormData {
+  callback: () => void;
+}
+
+export type AddReview = ActionWithPayload<
+  REVIEW_ACTION_TYPES.ADD_REVIEWS,
+  AddReviewsData
+>;
+export const addReview = withMatcher(
+  (formData: AddReviewsData): AddReview =>
+    createAction(REVIEW_ACTION_TYPES.ADD_REVIEWS, formData)
+);
 
 export const setAllReviews = withMatcher((reviews: Reviews): SetReviews => {
   return createAction(REVIEW_ACTION_TYPES.SET_REVIEWS, reviews);

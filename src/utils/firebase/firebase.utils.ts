@@ -163,11 +163,10 @@ export const addReview = async (formdata: ReviewFormData) => {
     image: "/images/user.jpg",
     createdAt,
   };
-  console.log("newData: ", newData);
   try {
     const reviewRef = doc(collectionRef);
     await setDoc(reviewRef, newData);
-    // console.log("created");
+    return true;
   } catch (error) {
     console.error(error);
     throw new Error("error creating order");

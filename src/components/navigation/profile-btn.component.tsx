@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { signOutStart } from "store/user/user.action";
 import Image from "components/image/image.component";
 import avatar from "assets/user.jpg";
+import { Link } from "react-router-dom";
 
 export default function ProfileBtn({ user }: { user: CurrentUser }) {
   const dispatch = useDispatch(),
@@ -72,16 +73,16 @@ export default function ProfileBtn({ user }: { user: CurrentUser }) {
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="#!"
+                <Link
+                  to="/places"
                   className={classNames(
                     active
                       ? "bg-gray-100 text-gray-900 dark:bg-woodsmoke-950 dark:text-gray-100"
                       : "text-gray-700 dark:text-gray-400",
                     "block px-4 py-2 text-sm cursor-pointer"
                   )}>
-                  Settings
-                </a>
+                  Places
+                </Link>
               )}
             </Menu.Item>
           </div>

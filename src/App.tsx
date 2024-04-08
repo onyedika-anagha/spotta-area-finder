@@ -32,11 +32,11 @@ function App() {
             path={"places"}
             element={<Places />}
           />
-          <Route
-            path={"place/:slug"}
-            element={<PlaceDetails />}
-          />
         </Route>
+        <Route
+          path={"place/:slug"}
+          element={<PlaceDetails />}
+        />
       </Routes>
       <ToastContainer />
     </Suspense>

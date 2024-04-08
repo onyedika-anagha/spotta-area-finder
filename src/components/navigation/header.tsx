@@ -14,7 +14,7 @@ export const truncateEmail = (email = "") => {
     email.substring(email.indexOf("@"), email.length)
   );
 };
-function Header() {
+function Header({ searchText }: { searchText?: string }) {
   const isLoggedIn = useSelector(selectIsLoggedIn),
     user = useSelector(selectCurrentUser);
   return (
@@ -40,7 +40,7 @@ function Header() {
               <div
                 className="items-center justify-between hidden md:flex md:w-auto md:order-1"
                 id="navbar-cta">
-                <TopSearchBar />
+                <TopSearchBar {...{ searchText }} />
               </div>
             )}
           </div>

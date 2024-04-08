@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classes from "./review-grid.component.module.css";
 import { Reviews } from "utils/helper/helper";
-import ReviewCard from "./review-card.component";
+import ReviewCard, { ReviewCardLoader } from "./review-card.component";
 
 function ReviewGrid({ reviews }: { reviews: Reviews | null }) {
   const [showTopOverLay, setShowTopOverLay] = useState<boolean>(false);
@@ -13,7 +13,7 @@ function ReviewGrid({ reviews }: { reviews: Reviews | null }) {
       setShowTopOverLay(false);
     }
   };
-  const reviewDatas = reviews == null ? new Array(20).fill(0) : reviews;
+  const reviewDatas = new Array(20).fill(0);
   return (
     <div
       className={`${classes["overlay-scroll-container"]} col-span-12 lg:col-span-5 flex h-full`}>
@@ -21,9 +21,14 @@ function ReviewGrid({ reviews }: { reviews: Reviews | null }) {
         className={`${classes["overlay-scroll-content"]} grid lg:grid-cols-2 gap-2`}
         onScrollCapture={handleScroll}>
         {/* Your scrollable content */}
-        {reviewDatas.map((item, index) => (
-          <ReviewCard key={index} />
-        ))}
+        {reviews == null
+          ? reviewDatas.map((item, index) => <ReviewCardLoader key={index} />)
+          : reviews.map((item, index) => (
+              <ReviewCard
+                key={index}
+                review={item}
+              />
+            ))}
         {/* This div will have a fading overlay on top */}
       </div>
       <div

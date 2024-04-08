@@ -13,8 +13,14 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const buttonClass = classNames(
     className,
-    "uppercase flex justify-center relative items-center text-sm text-white",
-    className.includes("bg-") ? "h-[40px] rounded-[5px]" : "default-button",
+    "uppercase flex justify-center relative items-center text-sm",
+    isDefault
+      ? "text-white"
+      : "border border-primary-500 text-primary-500 bg-transparent",
+    props.disabled ? "text-white bg-primary-100" : "",
+    className.includes("bg-") || !isDefault || props.disabled
+      ? "h-[40px] rounded-[5px]"
+      : "default-button",
     "shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
   );
   return (
