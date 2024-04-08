@@ -1,7 +1,12 @@
 import Button from "components/button/button.component";
 import Header from "components/navigation/header";
 import { BsBookmark, BsShare } from "react-icons/bs";
-import { Reviews, classNames, stringToArray } from "utils/helper/helper";
+import {
+  Reviews,
+  classNames,
+  shareLink,
+  stringToArray,
+} from "utils/helper/helper";
 import LeaveReview from "./leave-review.component";
 
 export type PlaceProps = {
@@ -37,7 +42,13 @@ function PlaceHeader({ reviews, location }: PlaceProps) {
               </Button>
               <Button
                 className="text-xs px-4"
-                isDefault={false}>
+                isDefault={false}
+                onClick={() =>
+                  shareLink(
+                    `/place/${location.slug}`,
+                    `Reviews on ${location.name}`
+                  )
+                }>
                 <BsShare />
               </Button>
             </div>

@@ -1,3 +1,5 @@
+import { alertMessage } from "components/toolkit/initial-state.component";
+
 export const longEnUSFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
   month: "long",
@@ -145,6 +147,26 @@ export const truncateEmail = (email = "") => {
   },
   capitalize = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  },
+  shareLink = (copyText: string, title: string) => {
+    const _BASE_URL = "https://spotta-area-finder.netlify.com";
+    const uri = _BASE_URL + copyText;
+    //
+    if (navigator.share) {
+      navigator
+        .share({
+          title: title,
+          url: uri,
+        })
+        .then(() => {
+          console.log("Thanks for sharing!");
+        })
+        .catch(console.error);
+    } else {
+      navigator.clipboard.writeText(uri).then(() => {
+        alertMessage("success", "Link Copied");
+      });
+    }
   },
   arrangeReviewsByCreatedAtDesc = (reviews: Reviews): Reviews => {
     // Convert createdAt strings to Date objects for proper sorting
