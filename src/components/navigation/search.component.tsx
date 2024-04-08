@@ -49,7 +49,7 @@ function TopSearchBar({ searchText }: { searchText?: string }) {
             <h6 className="text-sm"> Places & Locations</h6>
             <Link
               to="/places"
-              className="text-gray-500 underline">
+              className="text-gray-500 dark:text-gray-300 underline">
               <small>View All</small>
             </Link>
           </div>
