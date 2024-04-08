@@ -12,7 +12,7 @@ function PlaceReviews({ reviews }: { reviews: Reviews | undefined }) {
   return (
     <Reveal
       type={AnimateType.FadeInLeft}
-      className=" col-span-12 lg:col-span-7">
+      className=" col-span-12 lg:col-span-7 self-start">
       <div className="flex flex-col flex-col p-4 space-y-4 border-gray-200 divide-y divide-gray-200">
         {reviews == null
           ? new Array(10)
