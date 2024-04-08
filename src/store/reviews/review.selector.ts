@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 import { RootState } from "../store";
-import { ReviewState } from "./market.slice";
+import { ReviewState } from "./review.slice";
 
 const selectAllReviews = (state: RootState): ReviewState => state.reviews;
 

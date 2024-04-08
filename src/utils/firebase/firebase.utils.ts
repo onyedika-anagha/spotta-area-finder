@@ -19,10 +19,16 @@ import {
   setDoc,
   collection,
   writeBatch,
-  // query,
-  // getDocs,
+  query,
+  getDocs,
   QueryDocumentSnapshot,
 } from "firebase/firestore";
+import {
+  Review,
+  ReviewFormData,
+  Reviews,
+  longEnUSFormatter,
+} from "utils/helper/helper";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -143,4 +149,42 @@ export const getCurrentUser = (): Promise<User | null> => {
       reject
     );
   });
+};
+
+export const addReview = async (formdata: ReviewFormData) => {
+  if (!formdata) return;
+  const collectionRef = collection(db, "reviews");
+  const createdAt =
+    formdata.createdAt == null
+      ? longEnUSFormatter.format(new Date())
+      : longEnUSFormatter.format(new Date(formdata.createdAt));
+  const newData = {
+    ...formdata,
+    image: "/images/user.jpg",
+    createdAt,
+  };
+  console.log("newData: ", newData);
+  try {
+    const reviewRef = doc(collectionRef);
+    await setDoc(reviewRef, newData);
+    // console.log("created");
+  } catch (error) {
+    console.error(error);
+    throw new Error("error creating order");
+  }
+};
+
+export const getAllReviews = async (): Promise<Reviews | null> => {
+  const collectionRef = collection(db, "reviews");
+  const q = query(collectionRef);
+
+  const querySnapShot = await getDocs(q);
+  const ordersMap = querySnapShot.docs.map((doc) => {
+    const prod = doc.data();
+    const id = doc.id;
+    // console.log("id", doc.id);
+    return { ...prod, id } as Review;
+  });
+
+  return ordersMap;
 };

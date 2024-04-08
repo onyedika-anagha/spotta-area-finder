@@ -9,6 +9,8 @@ import Preloader from "./components/toolkit/preloader.component";
 
 const Home = lazy(() => import("./routes/home"));
 const Login = lazy(() => import("./routes/login"));
+const Places = lazy(() => import("./routes/places"));
+const PlaceDetails = lazy(() => import("./routes/places/place"));
 
 function App() {
   return (
@@ -25,6 +27,14 @@ function App() {
           <Route
             path={"login"}
             element={<Login />}
+          />
+          <Route
+            path={"places"}
+            element={<Places />}
+          />
+          <Route
+            path={"place/:slug"}
+            element={<PlaceDetails />}
           />
         </Route>
       </Routes>

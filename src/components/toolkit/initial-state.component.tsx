@@ -4,6 +4,7 @@ import { THEME_KEY } from "utils/helper/states";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { fetchAllReviews } from "store/reviews/review.action";
 
 export const alertMessage = (type: string, msg: string) => {
   const theme =
@@ -47,6 +48,7 @@ const InitialState = () => {
     ) {
       dispatch(setTheme("dark"));
     }
+    dispatch(fetchAllReviews());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {

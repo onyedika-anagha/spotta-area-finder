@@ -29,11 +29,15 @@ function FormInput({
     );
   return (
     <div>
-      <label
-        htmlFor={otherProps.id != null ? otherProps.id : `form-input-${tempID}`}
-        className="block mb-2 text-gray-900 dark:text-white auth-input-label">
-        {label}
-      </label>
+      {label && (
+        <label
+          htmlFor={
+            otherProps.id != null ? otherProps.id : `form-input-${tempID}`
+          }
+          className="block mb-2 text-gray-900 dark:text-white auth-input-label">
+          {label}
+        </label>
+      )}
       <div className="relative">
         <input
           {...{

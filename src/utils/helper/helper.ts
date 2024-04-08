@@ -57,10 +57,19 @@ export interface Review {
   amenities: string;
   rating: string;
   review: string;
-  created_at: string;
-  id: string;
+  createdAt: string;
+  id?: string;
   area_id: string;
   image: string;
+}
+
+export interface ReviewFormData {
+  name: string;
+  amenities: string;
+  rating: string;
+  review: string;
+  area_id: string;
+  createdAt?: string;
 }
 
 export enum Language {
@@ -108,3 +117,15 @@ export const animate_animation = (animate: AnimateType) => {
       };
   }
 };
+export const truncateEmail = (email = "") => {
+    return (
+      email.substring(0, 3) +
+      "..." +
+      email.substring(email.indexOf("@"), email.length)
+    );
+  },
+  stringToArray = (inputString: string): string[] => {
+    // Split the input string by commas and trim whitespace from each element
+    const array = inputString.split(",").map((item) => item.trim());
+    return array;
+  };
