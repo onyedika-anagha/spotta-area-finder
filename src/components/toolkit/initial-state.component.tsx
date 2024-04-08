@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { fetchAllReviews } from "store/reviews/review.action";
+import { checkUserSession } from "store/user/user.action";
 
 export const alertMessage = (type: string, msg: string) => {
   const theme =
@@ -59,6 +60,11 @@ const InitialState = () => {
       document.querySelector("html")?.classList.remove("dark");
     }
   }, [theme, dispatch]);
+
+  useEffect(() => {
+    dispatch(checkUserSession());
+  }, [dispatch]);
+
   return <></>;
 };
 

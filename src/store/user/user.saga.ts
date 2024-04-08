@@ -34,7 +34,7 @@ export function* getSnapshotFromUserAuth(
       userAuth
       // additionalInformation
     );
-    console.log(userSnapshot);
+    // console.log(userSnapshot);
     if (userSnapshot) {
       console.log(userSnapshot.data());
       yield* put(
