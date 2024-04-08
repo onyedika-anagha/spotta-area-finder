@@ -1,7 +1,6 @@
 import { AnimateType } from "utils/helper/helper";
 import Reveal from "../toolkit/reveal.component";
-import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import HeroSearch from "./hero-search.component";
 
 function LeftHero() {
   return (
@@ -17,13 +16,7 @@ function LeftHero() {
           neighbourhood you might have in mind.
         </p>
         <div className="flex flex-col space-y-3 items-center lg:items-start">
-          <FormInput
-            name="search"
-            type="search"
-            className="lg:w-[557px]"
-            placeholder="Enter Address"
-          />
-          <Button className="w-[146px] text-white">Search</Button>
+          <HeroSearch />
         </div>
       </>
     </Reveal>
