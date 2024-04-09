@@ -170,15 +170,30 @@ export const truncateEmail = (email = "") => {
   },
   arrangeReviewsByCreatedAtDesc = (reviews: Reviews): Reviews => {
     // Convert createdAt strings to Date objects for proper sorting
-    const reviewsWithDate = reviews;
+    const reviewsWithDate = reviews.map((review) => ({
+      ...review,
+      created_at: new Date(review.createdAt.replace(" at ", " ")),
+    }));
+
     // Sort the array by createdAt in descending order
     reviewsWithDate.sort((a, b) => {
       return (
-        new Date(b.createdAt.replace(" at ", " ")).getTime() -
-        new Date(a.createdAt.replace(" at ", " ")).getTime()
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
       );
+    });
+    const newReviews = reviewsWithDate.map((review) => {
+      const { created_at, ...newData } = review;
+      return newData;
     });
 
     // Return the sorted array
-    return reviewsWithDate;
+    return newReviews;
+  },
+  processNumbers = (num: number) => {
+    const firstChar = num.toString()[0];
+    if (firstChar <= "3") {
+      return parseInt(firstChar);
+    } else {
+      return parseInt("3" + num.toString().slice(1));
+    }
   };

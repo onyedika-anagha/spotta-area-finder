@@ -8,12 +8,12 @@ import { AnimateType, Review, extractFirstWords } from "utils/helper/helper";
 import moment from "moment";
 import Reveal from "components/toolkit/reveal.component";
 
-function getRandomService(): string {
+function getRandomService(num: number): string {
   const services = ["power", "water", "traffic", "wifi"];
-  const randomIndex = Math.floor(Math.random() * services.length);
-  return services[randomIndex];
+  // const randomIndex = Math.floor(Math.random() * services.length);
+  return services[num];
 }
-function ReviewCard({ review }: { review: Review }) {
+function ReviewCard({ review, num }: { review: Review; num: number }) {
   const date = moment(review.createdAt, "MMMM D, YYYY [at] HH:mm:ss");
   const timeago = date.fromNow();
   return (
@@ -90,7 +90,7 @@ function ReviewCard({ review }: { review: Review }) {
             </span>
           </div>
           <div className="flex items-center space-x-2 text-xs text-neutral-700 dark:text-neutral-300 relative">
-            <ReviewBadge badge={getRandomService()} />
+            <ReviewBadge badge={getRandomService(num)} />
           </div>
         </div>
       </>

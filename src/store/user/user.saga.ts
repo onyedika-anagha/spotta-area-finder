@@ -142,6 +142,7 @@ export function* isUserAuthenticated() {
 export function* signOut() {
   try {
     yield* call(signOutUser);
+    yield* put(userActions.logout(true));
     yield* put(signOutSuccess());
   } catch (error) {
     yield* put(signOutFailed(error as Error));
