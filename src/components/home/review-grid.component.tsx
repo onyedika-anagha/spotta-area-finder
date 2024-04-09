@@ -15,6 +15,7 @@ function ReviewGrid({ reviews }: { reviews: Reviews | null }) {
     const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
     setScrollPercent(scrolled);
   };
+
   const reviewDatas = new Array(20).fill(0);
   return (
     <div
@@ -40,7 +41,7 @@ function ReviewGrid({ reviews }: { reviews: Reviews | null }) {
       />
       <div
         className={classes["overlay-scroll-overlay-bottom"]}
-        style={{ opacity: scrollPercent < 100 ? 1 : 0 }}
+        style={{ opacity: scrollPercent < 98 ? 1 : 0 }}
       />
     </div>
   );
