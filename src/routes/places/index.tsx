@@ -1,10 +1,18 @@
 import Image from "components/image/image.component";
 import Reveal from "components/toolkit/reveal.component";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { AnimateType, stringToArray } from "utils/helper/helper";
+import { selectReviews } from "store/reviews/review.selector";
+import { AnimateType, PlaceLocation, stringToArray } from "utils/helper/helper";
 import { locations } from "utils/helper/states";
 
 function Places() {
+  const reviews = useSelector(selectReviews),
+    getReviews = (location: PlaceLocation) => {
+      return reviews == null
+        ? 0
+        : reviews.filter((review) => review.area_id === location.id).length;
+    };
   return (
     <main className="main">
       <div className="bg-blueGray-300">
@@ -53,12 +61,14 @@ function Places() {
                     </svg>
                   </div>
                   <div className="px-4 py-5 flex-auto">
-                    <h5 className="text-lg font-bold">Location</h5>
                     <Link
                       to={`/place/${place.slug}`}
-                      className="text-sm mt-1 mb-5 text-blueGray-400 font-bold uppercase">
+                      className="text-sm text-blueGray-400 font-bold uppercase">
                       {place.name}
                     </Link>
+                    <div className="text-xs font-bold mt-1 mb-5">
+                      “{getReviews(place)}” Reviews
+                    </div>
                     <div className="flex flex-wrap gap-2 w-full mt-2">
                       {stringToArray(place.tags).map((tag, i) => (
                         <span
